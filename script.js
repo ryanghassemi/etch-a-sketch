@@ -2,12 +2,18 @@ const container = document.querySelector('#container');
 const dimBtn = document.querySelector('#grid-size');
 const blackBtn = document.querySelector('#black');
 const rainBtn = document.querySelector('#rainbow');
+const opacBtn = document.querySelector('#opacity');
+const clrBtn = document.querySelector('#clear');
+clrBtn.addEventListener('click', () => createGrid(dim));
+let useOp = false;
 
-createGrid(16);
+opacBtn.addEventListener('click', () => useOp = !useOp);
+let dim = 16
+createGrid(dim);
 dimBtn.addEventListener('click', () => {
-    let dim = prompt('enter a #');
-    while (dim < 0 || dim > 100) {
-        dim = prompt('between 0-100 pls:)');
+    dim = prompt('enter a # from 1-100');
+    while (dim < 1 || dim > 100) {
+        dim = prompt('between 1-100 pls:)');
     }
     createGrid(dim);
     }
@@ -20,17 +26,33 @@ function createGrid(dim) {
         newDiv.classList.add('pixel')
         let pWidth = `${600/dim}px`;
         let pHeight = `${600/dim}px`;
-        let newCol = "black";
+        let newCol = "black"; 
+        let opacity;
+        opacity = 0;
         blackBtn.addEventListener('click', () => newCol = "black");
         rainBtn.addEventListener('click', () => newCol = `rgb(${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)})`);
         newDiv.style.width = pWidth;
         newDiv.style.height = pHeight;
         container.appendChild(newDiv);
         newDiv.ondragstart = () => false;
-        newDiv.addEventListener('mousedown', () => newDiv.style.backgroundColor = newCol);
+        newDiv.addEventListener('mousedown', () => {
+            newDiv.style.backgroundColor = newCol
+            opacity += 0.1;
+            if (!useOp) {
+                opacity = 1
+            }
+            newOp = `${opacity}`;
+            newDiv.style.opacity = newOp;
+        });
         newDiv.addEventListener('mouseenter', (event) => {
             if (event.buttons === 1) {
                 newDiv.style.backgroundColor = newCol;
+                opacity += 0.1;
+                if (!useOp) {
+                    opacity = 1
+                }
+                newOp = `${opacity}`;
+                newDiv.style.opacity = newOp;
             }
         });
     }
