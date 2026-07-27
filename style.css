@@ -1,0 +1,11 @@
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 320px;
+    height: 320px;
+}
+
+.pixel {
+    width: 20px;
+    height: 20px;
+}
