@@ -1,12 +1,10 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+
 
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 600;
+    width: 640px;
+    height: 640px;
     border: solid gray 1px;
 }
 

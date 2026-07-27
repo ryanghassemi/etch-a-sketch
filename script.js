@@ -27,8 +27,8 @@ function createGrid(dim) {
     for (let i = 0; i < dim ** 2; i++) {
         const newDiv = document.createElement('div');
         newDiv.classList.add('pixel')
-        let pWidth = `${600/dim}px`;
-        let pHeight = `${600/dim}px`;
+        let pWidth = `${640/dim}px`;
+        let pHeight = `${640/dim}px`;
         let newCol = "black"; 
         let opacity;
         opacity = 0;
