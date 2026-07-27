@@ -12,10 +12,13 @@
 
 .pixel {
     margin: 0px;
-    
+
 }
 
 button {
     margin: 10px;
 }
 
+.round {
+    border-radius: 12px;
+}

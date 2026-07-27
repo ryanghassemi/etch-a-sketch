@@ -4,6 +4,9 @@ const blackBtn = document.querySelector('#black');
 const rainBtn = document.querySelector('#rainbow');
 const opacBtn = document.querySelector('#opacity');
 const clrBtn = document.querySelector('#clear');
+const rndBtn = document.querySelector('#round');
+let round = false;
+rndBtn.addEventListener('click', () => round = !round);
 clrBtn.addEventListener('click', () => createGrid(dim));
 let useOp = false;
 
@@ -33,7 +36,9 @@ function createGrid(dim) {
         rainBtn.addEventListener('click', () => newCol = `rgb(${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)})`);
         newDiv.style.width = pWidth;
         newDiv.style.height = pHeight;
+        
         container.appendChild(newDiv);
+        
         newDiv.ondragstart = () => false;
         newDiv.addEventListener('mousedown', () => {
             newDiv.style.backgroundColor = newCol
@@ -43,6 +48,9 @@ function createGrid(dim) {
             }
             newOp = `${opacity}`;
             newDiv.style.opacity = newOp;
+            if (round) {
+                newDiv.classList.add("round");
+            }            
         });
         newDiv.addEventListener('mouseenter', (event) => {
             if (event.buttons === 1) {
@@ -53,6 +61,9 @@ function createGrid(dim) {
                 }
                 newOp = `${opacity}`;
                 newDiv.style.opacity = newOp;
+                if (round) {
+                    newDiv.classList.add("round");
+                }
             }
         });
     }
