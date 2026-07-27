@@ -5,6 +5,7 @@ const rainBtn = document.querySelector('#rainbow');
 const opacBtn = document.querySelector('#opacity');
 const clrBtn = document.querySelector('#clear');
 const rndBtn = document.querySelector('#round');
+const eraseBtn = document.querySelector('#eraser');
 let round = false;
 rndBtn.addEventListener('click', () => round = !round);
 clrBtn.addEventListener('click', () => createGrid(dim));
@@ -34,6 +35,7 @@ function createGrid(dim) {
         opacity = 0;
         blackBtn.addEventListener('click', () => newCol = "black");
         rainBtn.addEventListener('click', () => newCol = `rgb(${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)})`);
+        eraseBtn.addEventListener('click', () => newCol = "white");
         newDiv.style.width = pWidth;
         newDiv.style.height = pHeight;
         
